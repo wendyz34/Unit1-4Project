@@ -12,7 +12,7 @@ class Main {
         Budget original = new Budget(totalBill, savings);
         System.out.println("Amount left for other spendings: " + original.amountLeft());
         original.Categories();
-        original.otherSpendings();
+        original.end();
         /*if (done==true){
             System.out.println("Application done");
         }*/

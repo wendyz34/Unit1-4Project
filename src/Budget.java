@@ -10,7 +10,7 @@ public class Budget{
         this.totalBill= totalBill;
         this.savings = savings;
         this.categories = categories;
-        this.numCategories = numCategories;
+        //this.numCategories = numCategories;
 
     }
     public double amountLeft(){
@@ -25,7 +25,7 @@ public class Budget{
         }
         return left;
     }
-    public String Categories(){
+    public void Categories(){
         categories = "";
         Scanner scan = new Scanner(System.in);
         System.out.println("Num of categories: ");
@@ -36,20 +36,25 @@ public class Budget{
             categories+= nameC +"\n";
         }
         System.out.println(categories);
-        return categories;
-
-    }
-    public void otherSpendings(){
-        Scanner scan = new Scanner(System.in);
-        double total = 0;
-        for (int x =1;x<=numCategories;x++){
-            System.out.println("Enter your appromiate amount for category" + " " +  x);
-             total += scan.nextDouble();
+        categories.substring(0,categories.indexOf("\n"));
+       double total = 0;
+        for (int i =1; i<=numCategories;i++){
+            System.out.println("Enter your appromiate amount for category" +" "+ i);
+            total += scan.nextDouble();
         }
-        System.out.println(total);
+        if ((amountLeft()-total)<0){
+            System.out.println("Your other spendings is over by  " + Math.abs((amountLeft()-total)));
+        }else{
+            System.out.println("Remainding: " + (amountLeft()-total));
+        }
     }
     public void end(){
-        System.out.println("Remainding: ");
+        System.out.println("Monthly Summary: ");
+        System.out.println(totalBill);
+        System.out.println(savings);
+        System.out.println("--------");
+        System.out.println(categories);
+        System.out.println("--------");
     }
 
 
