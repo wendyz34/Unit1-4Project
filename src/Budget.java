@@ -58,13 +58,13 @@ public class Budget {
         System.out.println("Num of categories: ");
         int numCategories = scan.nextInt();
         ArrayList<String> names = new ArrayList<>();
-        for(int i =0; i<=numCategories;i++) {
+        for(int i =1; i<=numCategories;i++) {
             //String nameC = scan.nextLine();
             System.out.println("Name your categtories: ");
             names.add(scan.nextLine());
             //categories+=nameC + "\n";
         }
-       // System.out.println(names);
+        // System.out.println(names);
         //System.out.println(categories);
         ArrayList<Integer>spending= new ArrayList<>();
         for (int i =1; i<=numCategories;i++){
