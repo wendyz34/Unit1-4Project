@@ -69,7 +69,7 @@ public class Budget {
         ArrayList<String> categories = new ArrayList<String>();
         for (int i = 1; i <= numCategories; i++) {
             String s = scan.nextLine();
-            System.out.println("Name your categories(Press space after you finish typing): ");
+            System.out.println("Name your categories(Press return twice after you finish typing): ");
             categories.add(scan.nextLine());
         }
         System.out.println(categories);
@@ -99,16 +99,16 @@ public class Budget {
             System.out.println(otherspending);
         }*/
 
-
-        System.out.println("Monthly Summary: ");
-        System.out.println("Starting Total: " + totalBill);
-        System.out.println("Savings: " + savings);
+        System.out.printf("--------------------------------%n");
+        System.out.printf("     Monthly Summary    %n");
+        System.out.printf("--------------------------------%n");
+        System.out.println("|Starting Total |" + totalBill + "|");
+        System.out.println("|Savings |" + savings +"|");
         for (int y = 0; y < numCategories; y++) {
             otherspending = categories.get(y) + ": " + spending.get(y);
             System.out.println(otherspending);
         }
-        System.out.println("--------");
-
+        System.out.printf("--------------------------------%n");
 
 
     }
