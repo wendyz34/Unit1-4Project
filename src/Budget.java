@@ -4,15 +4,19 @@ public class Budget {
 
     private double totalBill;
     private double savings;
-
-    private int numCategories;
     private String categories;
+    private double spending;
+    private String otherspending;
+    private int numCategories;
 
     public Budget(double totalBill, double savings) {
         this.totalBill = totalBill;
         this.savings = savings;
         this.categories = categories;
-        //this.numCategories = numCategories;
+        this.otherspending = otherspending;
+        this.spending = spending;
+        this.numCategories = numCategories;
+
 
     }
 
@@ -27,6 +31,10 @@ public class Budget {
             return left;
         }
         return left;
+    }
+    public double roundedToHundredth (double toRound){
+        return Math.round(toRound * 100) / 100.000;
+
     }
 
     /*public void Categories(){
@@ -52,51 +60,56 @@ public class Budget {
             System.out.println("Remainding: " + (amountLeft()-total));
         }
     }*/
-    public void Categories(){
-        categories = "";
+    public void Categories() {
+        //ask how much other categories user what to split the money
         Scanner scan = new Scanner(System.in);
         System.out.println("Num of categories: ");
         int numCategories = scan.nextInt();
-        ArrayList<String> names = new ArrayList<>();
-        for(int i =1; i<=numCategories;i++) {
-            //String nameC = scan.nextLine();
-            System.out.println("Name your categtories: ");
-            names.add(scan.nextLine());
-            //categories+=nameC + "\n";
+        //name the categories
+        ArrayList<String> categories = new ArrayList<String>();
+        for (int i = 1; i <= numCategories; i++) {
+            String s = scan.nextLine();
+            System.out.println("Name your categories(Press space after you finish typing): ");
+            categories.add(scan.nextLine());
         }
-        // System.out.println(names);
-        //System.out.println(categories);
-        ArrayList<Integer>spending= new ArrayList<>();
-        for (int i =1; i<=numCategories;i++){
-            System.out.println("Enter your appromiate amount for category" +" "+ i);
-            spending.add(scan.nextInt());
+        System.out.println(categories);
+        //enter estimated amount for each category
+        ArrayList<Double> spending = new ArrayList<>();
+        int num = 1;
+        for (int i = 0; i < numCategories; i++) {
+            System.out.println("Enter your approximate amount for category" + " " + num);
+            spending.add(scan.nextDouble());
+            num++;
         }
+        System.out.println(spending);
+        //total for categories combined
         double total = 0;
-        for (int i =0;i<numCategories;i++){
+        for (int i = 0; i < numCategories; i++) {
             total += spending.get(i);
         }
         System.out.println(total);
-        if ((amountLeft()-total)<0){
-            System.out.println("Your other spendings is over by  " + Math.abs((amountLeft()-total)));
-        }else{
-            System.out.println("Remainding: " + (amountLeft()-total));
+        if ((amountLeft() - total) < 0) {
+            System.out.println("Your planned spending is over by  " + Math.abs((amountLeft() - total)));
+            // System.exit(0);
+        } else {
+            System.out.println("Remaining: " + (amountLeft() - total));
         }
+        /*for (int y =0; y<numCategories;y++){
+            otherspending = categories.get(y)+ ": " + spending.get(y);
+            System.out.println(otherspending);
+        }*/
+
+
+        System.out.println("Monthly Summary: ");
+        System.out.println("Starting Total: " + totalBill);
+        System.out.println("Savings: " + savings);
+        for (int y = 0; y < numCategories; y++) {
+            otherspending = categories.get(y) + ": " + spending.get(y);
+            System.out.println(otherspending);
+        }
+        System.out.println("--------");
+
+
+
     }
-
-        public void end () {
-            System.out.println("Monthly Summary: ");
-            System.out.println(totalBill);
-            System.out.println(savings);
-            System.out.println("--------");
-            System.out.println(categories);
-            System.out.println("--------");
-        }
-
-
-        public double roundedToHundredth (double toRound){
-            return Math.round(toRound * 100) / 100.000;
-
-        }
-
-
-    }
+}
