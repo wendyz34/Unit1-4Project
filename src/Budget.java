@@ -16,7 +16,7 @@ public class Budget {
         this.otherspending = otherspending;
         this.spending = spending;
         this.numCategories = numCategories;
-
+//
 
     }
     //remaining amount after savings
