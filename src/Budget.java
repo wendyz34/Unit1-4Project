@@ -4,93 +4,95 @@ public class Budget {
 
     private double totalBill;
     private double savings;
-
-    private int numCategories;
     private String categories;
-
+    private double spending;
+    private String otherspending;
+    private int numCategories;
+//intilaize
     public Budget(double totalBill, double savings) {
         this.totalBill = totalBill;
         this.savings = savings;
         this.categories = categories;
-        //this.numCategories = numCategories;
+        this.otherspending = otherspending;
+        this.spending = spending;
+        this.numCategories = numCategories;
+
 
     }
-
+    //remaining amount after savings
     public double amountLeft() {
         double left = (roundedToHundredth(totalBill - savings));
         Scanner scan = new Scanner(System.in);
-        if (left < 0) {
-            System.out.println("Over your monthly wage. Rerun to restart");
-        } else if (left == 0) {
-            System.out.println("Saving Everything");
-        } else {
+        if (left==0||left<0){
+            System.out.println("You saved everything or it's over your monthly way. Program ends.");
+            System.exit(0);
+
+        }else{
             return left;
         }
         return left;
     }
+    //rounds numbers
+    public double roundedToHundredth (double toRound){
+        return Math.round(toRound * 100) / 100.000;
 
-    /*public void Categories(){
-        categories = "";
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Num of categories: ");
-        int numCategories = scan.nextInt();
-        for(int i =0; i<=numCategories;i++) {
-            String nameC = scan.nextLine();
-            System.out.println("Name your categtories: ");
-            categories+= nameC +"\n";
-        }
-        System.out.println(categories);
-        categories.substring(0,categories.indexOf("\n"));
-        double total = 0;
-        for (int i =1; i<=numCategories;i++){
-            System.out.println("Enter your appromiate amount for category" +" "+ i);
-            total += scan.nextDouble();
-        }
-        if ((amountLeft()-total)<0){
-            System.out.println("Your other spendings is over by  " + Math.abs((amountLeft()-total)));
-        }else{
-            System.out.println("Remainding: " + (amountLeft()-total));
-        }
-    }*/
+    }
+
     public void Categories() {
-        categories = "";
+        //ask how much other categories user what to split the money
         Scanner scan = new Scanner(System.in);
         System.out.println("Num of categories: ");
         int numCategories = scan.nextInt();
-        ArrayList<String> names = new ArrayList<String>();
-        for (int i = 0; i <= numCategories; i++) {
-            for (int x = 0; x < numCategories; x++) {
-                System.out.println("Name your categories");
-                String name = (scan.nextLine());
-                names.add(name);
-            }
-
-            double total = 0;
-            for (int z = 1; z <= numCategories; z++) {
-                System.out.println("Enter your appromiate amount for category" + " " + z);
-                total += scan.nextDouble();
-            }
-            if ((amountLeft() - total) < 0) {
-                System.out.println("Your other spendings is over by  " + Math.abs((amountLeft() - total)));
-            } else {
-                System.out.println("Remainding: " + (amountLeft() - total));
-            }
-
+        //name the categories
+        ArrayList<String> categories = new ArrayList<String>();
+        for (int i = 1; i <= numCategories; i++) {
+            String s = scan.nextLine();
+            System.out.println("Name your categories(Press enter twice after you finish typing): ");
+            categories.add(scan.nextLine());
         }
-        public void end () {
-            System.out.println("Monthly Summary: ");
-            System.out.println(totalBill);
-            System.out.println(savings);
-            System.out.println("--------");
-            System.out.println(categories);
-            System.out.println("--------");
+        //ERROR CHECK FOR REPEATED NAMES
+       /*for (int i = 0; i<numCategories;i++){
+           if(categories.get(i).equals(categories.get(i))){
+               System.out.println("Letting you know " + categories.get(i+1) + "is repeated");
+           }else{
+               System.out.println(categories);
+           }
+       }*/
+        //enter estimated amount for each category
+        ArrayList<Double> spending = new ArrayList<>();
+        int num = 1;
+        for (int i = 0; i < numCategories; i++) {
+            System.out.println("Enter your approximate amount for category" + " " + num);
+            spending.add(scan.nextDouble());
+            num++;
         }
-
-
-        public double roundedToHundredth (double toRound){
-            return Math.round(toRound * 100) / 100.000;
-
+        System.out.println(spending);
+        //total for categories combined
+        double total = 0;
+        for (int i = 0; i < numCategories; i++) {
+            total += spending.get(i);
         }
+        System.out.println(total);
+        for (int y =0; y<numCategories;y++){
+            otherspending = categories.get(y)+ ": " + spending.get(y);
+        }
+        //prints a summary
+        //PRINT THE ENDING IN THE SAME LENGTH
+        System.out.printf("--------------------------------%n");
+        System.out.printf("         Monthly Summary        %n");
+        System.out.printf("--------------------------------%n");
+        System.out.println("|Starting Total: " + "$" + totalBill + "       |");
+        System.out.println("|Planned Savings: " + "$" + savings +"      |");
+        for (int y = 0; y < numCategories; y++) {
+            otherspending = "|" + categories.get(y) + ": " + "$" + spending.get(y) + "            |";
+            System.out.println(otherspending);
+        }
+        if ((amountLeft() - total) < 0) {
+            System.out.println("|Your planned spending is over by  " + Math.abs((amountLeft() - total))+"|");
+        } else {
+            System.out.println("|Remaining:         " + (amountLeft() - total) + "|");
+        }
+        System.out.printf("--------------------------------%n");
 
 
     }
