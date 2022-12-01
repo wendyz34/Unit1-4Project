@@ -99,8 +99,8 @@ public class Budget {
         System.out.printf("--------------------------------%n");
         System.out.printf("         "  + " Monthly Summary        %n");
         System.out.printf("--------------------------------%n");
-        System.out.println("|Starting Total: " + "$" + totalBill + " |");
-        System.out.println("|Planned Savings: " + "$" + savings + " |");
+        System.out.println("|Starting Total: " + "$" + roundedToHundredth(totalBill) +  " |");
+        System.out.println("|Planned Savings: " + "$" + roundedToHundredth(savings) + " |");
         for (int y = 0; y < numCategories; y++) {
         otherspending = "|" + categories.get(y) + ": " + "$" + spending.get(y) + " |";
         System.out.println(otherspending);
@@ -108,7 +108,7 @@ public class Budget {
         if ((amountLeft() - total) < 0) {
         System.out.println("|Your planned spending is over by  " + Math.abs((amountLeft() - total)) + "|");
     } else {
-        System.out.println("|Remaining: " + "$" + (amountLeft() - total) + "|");
+        System.out.println("|Remaining: " + "$" + roundedToHundredth(amountLeft() - total) + "|");
     }
         System.out.println();
         System.out.println("Entered at: " + date);
