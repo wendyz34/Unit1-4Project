@@ -9,7 +9,7 @@ class Main {
         System.out.println("How much are you planning to save? ");
         double savings = scan.nextDouble();
         Budget startOff = new Budget(totalBill, savings);
-        System.out.println("Amount left for other spendings: " + startOff.amountLeft());
+        System.out.println("Amount left for other spendings: $" + startOff.amountLeft());
         startOff.toString();
         startOff.Categories();
 
