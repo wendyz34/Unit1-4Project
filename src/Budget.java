@@ -11,9 +11,7 @@ public class Budget {
 
     private int numCategories;
 
-    /**
-     * Budget class  initialize the variables and make an object with the totalBill and saving
-     */
+    /** Budget class  initialize the variables and make an object with the totalBill and saving*/
     public Budget(double totalBill, double savings) {
         this.totalBill = totalBill;
         this.savings = savings;
@@ -24,9 +22,8 @@ public class Budget {
 
     }
 
-    /**
-     * toString() method ask for the month that the user is making the budget for
-     */
+    /** toString() method ask for the month that the user is making the budget for
+     @return date*/
     public String toString() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter today's date: ");
@@ -34,10 +31,7 @@ public class Budget {
         return date;
     }
 
-    /**
-     * amountLeft() method show the user the amount left they can plan for other spending through the month
-     * also shows if a budget is necessary if too much is saved
-     */
+    /** amountLeft() method show the user the amount left they can plan for other spending through the month; shows if a budget is necessary if too much is saved*/
     public double amountLeft() {
         double left = (roundedToHundredth(totalBill - savings));
         Scanner scan = new Scanner(System.in);
@@ -51,20 +45,16 @@ public class Budget {
         return left;
     }
 
-    /**
-     * roundedToHundredth method rounds money
+    /**roundedToHundredth method rounds money
      * @param toRound
+     * @return input rounded to the hundredths
      */
     public double roundedToHundredth(double toRound) {
         return Math.round(toRound * 100) / 100.000;
 
     }
 
-    /**
-     * Categories does a lot of calculation
-     *
-     * @ more explanation in the comments
-     */
+    /** Categories does a lot of calculation and prints a summary, more explanation in the comments*/
     public void Categories() {
         //ask how much other categories user what to split the money
         Scanner scan = new Scanner(System.in);
@@ -109,17 +99,19 @@ public class Budget {
         System.out.printf("--------------------------------%n");
         System.out.printf("         "  + " Monthly Summary        %n");
         System.out.printf("--------------------------------%n");
-        System.out.println("|Starting Total: " + "$" + totalBill + "       |");
-        System.out.println("|Planned Savings: " + "$" + savings + "      |");
+        System.out.println("|Starting Total: " + "$" + totalBill + " |");
+        System.out.println("|Planned Savings: " + "$" + savings + " |");
         for (int y = 0; y < numCategories; y++) {
-        otherspending = "|" + categories.get(y) + ": " + "$" + spending.get(y) + "            |";
+        otherspending = "|" + categories.get(y) + ": " + "$" + spending.get(y) + " |";
         System.out.println(otherspending);
     }
         if ((amountLeft() - total) < 0) {
         System.out.println("|Your planned spending is over by  " + Math.abs((amountLeft() - total)) + "|");
     } else {
-        System.out.println("|Remaining:         " + "$" + (amountLeft() - total) + "|");
+        System.out.println("|Remaining: " + "$" + (amountLeft() - total) + "|");
     }
+        System.out.println();
+        System.out.println("Entered at: " + date);
         System.out.printf("--------------------------------%n");
 
 }
