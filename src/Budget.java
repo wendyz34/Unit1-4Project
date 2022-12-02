@@ -88,14 +88,14 @@ public class Budget {
             total += spending.get(i);
         }
         total = roundedToHundredth(total);
-        System.out.println("Amount for categories added together:  $" + total);
+        System.out.println("Amount for categories added together:  \n$" + total);
         for (int y = 0; y < numCategories; y++) {
             otherspending = categories.get(y) + ": " + spending.get(y);
         }
 
-    //prints a summary for the month
+        //prints a summary for the month
         System.out.printf("--------------------------------%n");
-        System.out.printf("         "  + " Monthly Summary        %n");
+        System.out.printf("         " + " Monthly Summary        %n");
         System.out.printf("--------------------------------%n");
         System.out.println("|Starting Total: " + "$" + roundedToHundredth(totalBill) +  " |");
         System.out.println("|Planned Savings: " + "$" + roundedToHundredth(savings) + " |");
