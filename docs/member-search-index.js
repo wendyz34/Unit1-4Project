@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"<Unnamed>","c":"Budget","l":"amountLeft()"},{"p":"<Unnamed>","c":"Budget","l":"Budget(double, double)","u":"%3Cinit%3E(double,double)"},{"p":"<Unnamed>","c":"Budget","l":"Categories()"},{"p":"<Unnamed>","c":"Budget","l":"roundedToHundredth(double)"},{"p":"<Unnamed>","c":"Budget","l":"toString()"}];updateSearchResults();

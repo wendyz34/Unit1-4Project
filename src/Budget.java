@@ -5,7 +5,6 @@ public class Budget {
 
     private double totalBill;
     private double savings;
-    private String categories;
     private String otherspending;
     private String date;
 
@@ -15,7 +14,6 @@ public class Budget {
     public Budget(double totalBill, double savings) {
         this.totalBill = totalBill;
         this.savings = savings;
-        this.categories = categories;
         this.otherspending = otherspending;
         this.date = date;
         this.numCategories = numCategories;
