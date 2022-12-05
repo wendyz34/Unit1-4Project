@@ -16,7 +16,8 @@ public class Budget {
         this.numCategories = numCategories;
     }
 
-    /** Budget class make an object with the totalBill and saving*/
+    /** Budget class make an object with the totalBill and saving
+     * @param totalBill,savings*/
     public Budget(double totalBill, double savings) {
         this.totalBill = totalBill;
         this.savings = savings;
@@ -95,47 +96,6 @@ public class Budget {
         for (int y = 0; y < numCategories; y++) {
             otherspending = categories.get(y) + ": " + spending.get(y);
         }
-        //new added
-        /*System.out.println("Type done if you're done and edit if you want to change the amount for the categories");
-        String answer = scan.nextLine();
-        boolean finish =false;
-            if (answer.equals("edit")) {
-                System.out.println("What number category would you like to change");
-                int changeCategories = scan.nextInt();
-                System.out.println("What amount would you like to change category " + changeCategories + "into");
-                double changedAmount = scan.nextDouble();
-                spending.get(changeCategories).equals(changedAmount);
-                System.out.println("Type done or edit");
-                String newAnswer = scan.nextLine();
-                if (newAnswer.equals("done")){
-                    finish = true;
-                    answer = "done";
-                }else{
-                    finish = false;
-                    answer = "edit";
-                }
-            } else if (answer.equals("done")) {
-                System.out.printf("--------------------------------%n");
-                System.out.printf("         " + " Monthly Summary        %n");
-                System.out.printf("--------------------------------%n");
-                System.out.println("|Starting Total: " + "$" + roundedToHundredth(totalBill) + " |");
-                System.out.println("|Planned Savings: " + "$" + roundedToHundredth(savings) + " |");
-                for (int y = 0; y < numCategories; y++) {
-                    otherspending = "|" + categories.get(y) + ": " + "$" + spending.get(y) + " |";
-                    System.out.println(otherspending);
-                }
-                if ((amountLeft() - total) < 0) {
-                    System.out.println("|Your planned spending is over by  " + Math.abs((amountLeft() - total)) + "|");
-                } else {
-                    System.out.println("|Remaining: " + "$" + roundedToHundredth(amountLeft() - total) + "|");
-                }
-                System.out.println();
-                System.out.println("Entered at: " + date);
-                System.out.printf("--------------------------------%n");
-            } else {
-                System.out.println("Didn't understand, type done or edit");
-            }*/
-
         //prints a summary for the month
         System.out.printf("--------------------------------%n");
         System.out.printf("         " + " Monthly Summary        %n");
