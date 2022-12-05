@@ -63,7 +63,7 @@ public class Budget {
         System.out.println("Number of categories you plan to split your budget: ");
         int numCategories = scan.nextInt();
         //name the categories
-        ArrayList<String> categories = new ArrayList<String>();
+        ArrayList<String> categories = new ArrayList<>();
         for (int i = 1; i <= numCategories; i++) {
             String s = scan.nextLine();
             System.out.println("Name your categories(Press enter twice after you finish typing): ");
